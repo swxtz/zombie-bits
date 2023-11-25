@@ -9,17 +9,22 @@ public class PlayerCamera : MonoBehaviour
     // Mouse Axis
     private float xMouse;
     private float yMouse;
-    private float xRotation;
-
+    private Vector2 mousePos;
 
     void Update()
     {
         xMouse = Input.GetAxis("Mouse X") * sensi;
         yMouse = Input.GetAxis("Mouse Y") * sensi;
 
-        //Quaternion rotation = Quaternion.Euler(xMouse, yMouse, 0);
+        mousePos.x += xMouse;
+        mousePos.y += yMouse;
 
-        //transform.rotation = Quaternion.Lerp(transform.rotation, rotation, Time.deltaTime);;
-        transform.Rotate(xMouse, yMouse, 0);
+        if(mousePos.x >= 30 ) mousePos.x = 30;
+        if(mousePos.y >= -55 ) mousePos.y = -55;
+
+        transform.localRotation = Quaternion.Euler(-mousePos.y, mousePos.x, 0);
+
+        // https://www.youtube.com/watch?time_continue=79&v=CxI2OBdhLno&embeds_referring_euri=https%3A%2F%2Fwww.google.com%2F&source_ve_path=MzY4NDIsMzY4NDIsMzY4NDIsMzY4NDIsMzY4NDIsMzY4NDIsMzY4NDIsMzY4NDIsMzY4NDIsMzY4NDIsMzY4NDIsMjg2NjY&feature=emb_logo
+
     }
 }
