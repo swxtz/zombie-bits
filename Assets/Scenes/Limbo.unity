@@ -10034,6 +10034,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 20
+  horizontalInput: 0
+  verticalInput: 0
 --- !u!1 &6030418065950697148
 GameObject:
   m_ObjectHideFlags: 0
@@ -11215,9 +11217,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 748770ba0389dfb45a500c7272d19452, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sensi: 10
+  sensi: 400
   player: {fileID: 6791754443507845388}
   playerRot: {fileID: 2653238534452571202}
+  limitRotationY: 50
 --- !u!4 &6808571981794376758
 Transform:
   m_ObjectHideFlags: 0
@@ -13168,6 +13171,7 @@ MonoBehaviour:
   sensi: 0
   player: {fileID: 0}
   playerRot: {fileID: 0}
+  limitRotationY: 50
 --- !u!4 &7832002403510036235
 Transform:
   m_ObjectHideFlags: 0
