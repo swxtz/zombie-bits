@@ -1,68 +1,49 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    [Header("Movement")]
-    public float moveSpeed;
+    public float velocity;
+    public Vector3 body;
 
-    public float groundDrag;
+    private float gravity;
 
-    [Header("Ground Check")]
-    public float playerHeight;
-    public LayerMask whatIsGround;
-    bool grounded;
+    [SerializeField]
+    Rigidbody rb;
 
-    public Transform orientation;
+    bool isJumping = false;
 
     float horizontalInput;
     float verticalInput;
 
-    Vector3 moveDirection;
-
-    Rigidbody rb;
-
-    private void Start()
+    void Start()
     {
         rb = GetComponent<Rigidbody>();
 
-        // Não deixa o jogador cair
         rb.freezeRotation = true;
     }
 
-    private void Update()
+    // Update is called once per frame
+    void Update()
     {
+        verticalInput = Input.GetAxis("Vertical");
+        horizontalInput = Input.GetAxis("Horizontal");
 
-        grounded = Physics.Raycast(transform.position, Vector3.down, playerHeight * 0.5f + 0.2f, whatIsGround);
-
-        PlayerInput();
-
-        if (grounded)
+        if (isJumping == false)
         {
-            rb.drag = groundDrag;
-        } else
-        {
-            rb.drag = 0;
+            //transform.Translate(Vector3.down * Time.deltaTime * gravity);
+
+            
         }
+
+        transform.Translate(Vector3.forward * velocity * Time.deltaTime * verticalInput);
     }
 
-    private void FixedUpdate()
+    private void LateUpdate()
     {
-        MovePlayer();
+        
     }
 
-    private void PlayerInput()
-    {
-        horizontalInput = Input.GetAxisRaw("Horizontal");
-        verticalInput = Input.GetAxisRaw("Vertical");
-    }
-
-    private void MovePlayer()
-    {
-        // Calcula a movimentação do player
-        moveDirection = orientation.forward * verticalInput + orientation.right * horizontalInput;
-
-        rb.AddForce(moveDirection.normalized * moveSpeed * 10f, ForceMode.Force);
-    }
 }

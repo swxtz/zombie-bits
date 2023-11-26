@@ -10053,25 +10053,6 @@ Transform:
   - {fileID: 411532208536409116}
   m_Father: {fileID: 545550571171381867}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &6024215173814786341
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6791754443507845388}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b73acd193ab59b84fb11112076b4efc7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  moveSpeed: 7
-  groundDrag: 5
-  playerHeight: 2
-  whatIsGround:
-    serializedVersion: 2
-    m_Bits: 128
-  orientation: {fileID: 476735643}
 --- !u!1 &6030418065950697148
 GameObject:
   m_ObjectHideFlags: 0
@@ -11232,9 +11213,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2653238534452571202}
-  - component: {fileID: 6024215173814786341}
   - component: {fileID: 6791754443507845389}
   - component: {fileID: 6791754443507845390}
+  - component: {fileID: 6791754443507845391}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -11285,6 +11266,20 @@ Rigidbody:
   m_Interpolate: 1
   m_Constraints: 0
   m_CollisionDetection: 1
+--- !u!114 &6791754443507845391
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6791754443507845388}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e895b28e0384ec0488e9596fea533950, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  velocity: 10
+  rb: {fileID: 6791754443507845390}
 --- !u!4 &6808571981794376758
 Transform:
   m_ObjectHideFlags: 0
