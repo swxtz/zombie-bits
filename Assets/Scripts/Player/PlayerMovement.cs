@@ -7,6 +7,13 @@ public class PlayerMovement : MonoBehaviour
     [Header("Movement")]
     public float moveSpeed;
 
+    public float groundDrag;
+
+    [Header("Ground Check")]
+    public float playerHeight;
+    public LayerMask whatIsGround;
+    bool grounded;
+
     public Transform orientation;
 
     float horizontalInput;
@@ -26,7 +33,18 @@ public class PlayerMovement : MonoBehaviour
 
     private void Update()
     {
+
+        grounded = Physics.Raycast(transform.position, Vector3.down, playerHeight * 0.5f + 0.2f, whatIsGround);
+
         PlayerInput();
+
+        if (grounded)
+        {
+            rb.drag = groundDrag;
+        } else
+        {
+            rb.drag = 0;
+        }
     }
 
     private void FixedUpdate()
