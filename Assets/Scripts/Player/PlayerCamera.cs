@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,22 +6,25 @@ using UnityEngine;
 public class PlayerCamera : MonoBehaviour
 {
     public float sensi;
+    public GameObject player;
+    public Transform playerRot; 
 
     // Mouse Axis
     private float xMouse;
     private float yMouse;
     private Vector2 mousePos;
 
+    public float limitRotationY = 50f;
+
     void Update()
     {
-        xMouse = Input.GetAxis("Mouse X") * sensi;
-        yMouse = Input.GetAxis("Mouse Y") * sensi;
+        xMouse = Input.GetAxis("Mouse X") * sensi *  Time.deltaTime;
+        yMouse = Input.GetAxis("Mouse Y") * sensi * Time.deltaTime;
 
         mousePos.x += xMouse;
         mousePos.y += yMouse;
 
-        if(mousePos.x >= 30 ) mousePos.x = 30;
-        if(mousePos.y >= -55 ) mousePos.y = -55;
+        mousePos.y = Mathf.Clamp(mousePos.y, -limitRotationY, limitRotationY);
 
         transform.localRotation = Quaternion.Euler(-mousePos.y, mousePos.x, 0);
 
