@@ -4,5 +4,11 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/Menu.unity
+    guid: b19756ef57651e144bf645641b485cca
+  - enabled: 1
+    path: Assets/Scenes/Limbo.unity
+    guid: 598c827ad17e2eb4ca816859fce367de
   m_configObjects: {}

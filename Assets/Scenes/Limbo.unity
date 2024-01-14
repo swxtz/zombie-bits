@@ -555,7 +555,7 @@ GameObject:
   - component: {fileID: 1461175123}
   - component: {fileID: 1461175122}
   m_Layer: 5
-  m_Name: Ui
+  m_Name: UI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -11279,6 +11279,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   velocity: 10
+  body: {x: 0, y: 0, z: 0}
   rb: {fileID: 6791754443507845390}
 --- !u!4 &6808571981794376758
 Transform:
