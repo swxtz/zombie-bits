@@ -13,6 +13,7 @@ public class MainMenuManager : MonoBehaviour
     public void PlayGame()
    {
         SceneManager.LoadScene(initialLevelName);
+        PauseMenu.StartGameFromMenu();
    }
 
     public void ExitGame()

@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 public class PauseMenu : MonoBehaviour
 {
     public GameObject pauseMenu;
+    public GameObject OptionsMenu;
 
     [SerializeField]
     public static bool isPaused = false;
@@ -15,6 +16,7 @@ public class PauseMenu : MonoBehaviour
     void Start()
     {
         pauseMenu.SetActive(false);  
+        OptionsMenu.SetActive(false);
     }
 
     // Update is called once per frame
@@ -22,7 +24,6 @@ public class PauseMenu : MonoBehaviour
     {
         if(Input.GetKeyDown(KeyCode.Escape))
         {
-            Debug.Log(isPaused);
 
             if(isPaused)
             {
@@ -57,5 +58,22 @@ public class PauseMenu : MonoBehaviour
     {
         Time.timeScale = 0f;
         SceneManager.LoadScene(mainMenuSceneName);
+    }
+
+    public void OptionsButton()
+    {
+        OptionsMenu.SetActive(true);
+    }
+
+    public void BackToPauseMenu()
+    {
+        pauseMenu.SetActive(true);
+        OptionsMenu.SetActive(false);
+    }
+
+    public static void StartGameFromMenu()
+    {
+        Time.timeScale = 1f;
+        isPaused = false;
     }
 }
