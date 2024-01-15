@@ -4,45 +4,63 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    public float velocity;
-    public Vector3 body;
 
-    private float gravity;
+    private CharacterController controller;
 
-    [SerializeField]
-    Rigidbody rb;
+    public float speed = 12f;
+    public float gravity = -9.8f * 2;
+    public float jumpHeight = 3f;
 
-    bool isJumping = false;
+    public Transform groundCheck;
+    public float groundDistance = 0.4f;
+    public LayerMask groundMask;
 
-    float horizontalInput;
-    float verticalInput;
+    Vector3 velocity;
+
+    bool isGrounded;
+    bool isMoving;
+
+    private Vector3 lastPosition = new Vector3(0f, 0f, 0f);
 
     void Start()
     {
-        rb = GetComponent<Rigidbody>();
-
-        rb.freezeRotation = true;
+        controller = GetComponent<CharacterController>();
     }
 
-    // Update is called once per frame
     void Update()
     {
-        verticalInput = Input.GetAxis("Vertical");
-        horizontalInput = Input.GetAxis("Horizontal");
-
-        if (isJumping == false)
+        isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
+        if(isGrounded && velocity.y <0)
         {
-            //transform.Translate(Vector3.down * Time.deltaTime * gravity);
-
-            
+            velocity.y = -2f;
         }
 
-        transform.Translate(Vector3.forward * velocity * Time.deltaTime * verticalInput);
-    }
+        float x = Input.GetAxis("Horizontal");
+        float z = Input.GetAxis("Vertical");
 
-    private void LateUpdate()
-    {
-        
-    }
+        Vector3 move = transform.right * x + transform.forward * z;
 
+        controller.Move(move * speed * Time.deltaTime);
+
+        if(Input.GetButtonDown("Jump") && isGrounded)
+        {
+            velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
+        }
+
+        // Falling down
+        velocity.y += gravity * Time.deltaTime;
+
+
+        controller.Move(velocity * Time.deltaTime);
+
+        if (lastPosition != gameObject.transform.position && isGrounded == true)
+        {
+            isMoving = true;
+        } else
+        {
+            isMoving = false;
+        }
+
+        lastPosition = gameObject.transform.position;
+    }
 }
