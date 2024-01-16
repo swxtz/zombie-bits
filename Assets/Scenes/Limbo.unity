@@ -2629,6 +2629,11 @@ Terrain:
   m_EnableHeightmapRayTracing: 1
   m_EnableTreesAndDetailsRayTracing: 0
   m_TreeMotionVectorModeOverride: 3
+--- !u!20 &1246852817 stripped
+Camera:
+  m_CorrespondingSourceObject: {fileID: 6961392445970439126, guid: 372a3d932e6c76e48a9f4468b1247e20, type: 3}
+  m_PrefabInstance: {fileID: 4619079656828615920}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1258005961
 GameObject:
   m_ObjectHideFlags: 0
@@ -4895,6 +4900,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 2797994144596496525, guid: 372a3d932e6c76e48a9f4468b1247e20, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.32
+      objectReference: {fileID: 0}
+    - target: {fileID: 2797994144596496525, guid: 372a3d932e6c76e48a9f4468b1247e20, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.07
+      objectReference: {fileID: 0}
     - target: {fileID: 3341196627579161420, guid: 372a3d932e6c76e48a9f4468b1247e20, type: 3}
       propertyPath: pauseMenu
       value: 
@@ -4903,6 +4916,10 @@ PrefabInstance:
       propertyPath: OptionsMenu
       value: 
       objectReference: {fileID: 1363608346}
+    - target: {fileID: 5822505322398285277, guid: 372a3d932e6c76e48a9f4468b1247e20, type: 3}
+      propertyPath: playerCamera
+      value: 
+      objectReference: {fileID: 1246852817}
     - target: {fileID: 5822505322398285277, guid: 372a3d932e6c76e48a9f4468b1247e20, type: 3}
       propertyPath: bulletVelocity
       value: 100
