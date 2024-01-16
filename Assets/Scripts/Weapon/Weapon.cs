@@ -63,6 +63,25 @@ public class Weapon : MonoBehaviour
             burstBulletsLeft = bulletsPerBurst;
             FireWeapon();
         }
+
+        if(Input.GetKeyDown(KeyCode.N))
+        {
+            if (currentShootingMode == ShootingMode.Single)
+            {
+                ChangeWeaponMode(ShootingMode.Burst);
+                shootingDelay = 0.2f;
+            }
+            else if (currentShootingMode == ShootingMode.Burst)
+            {
+                ChangeWeaponMode(ShootingMode.Auto);
+                shootingDelay = 0.1f;
+            }
+            else if (currentShootingMode == ShootingMode.Auto)
+            { 
+                ChangeWeaponMode(ShootingMode.Single);
+                shootingDelay = 0.3f;
+            }
+        }
     }
 
     private void FireWeapon()
@@ -132,7 +151,7 @@ public class Weapon : MonoBehaviour
         Destroy(bullet);
     }
 
-    public void ChangeWeaponMode(ShootingMode shootingMode)
+    public void ChangeWeaponModeHUD(ShootingMode shootingMode)
     {
         string mode;
         Debug.Log(shootingMode);
@@ -158,6 +177,12 @@ public class Weapon : MonoBehaviour
             weaponModeTextField.text = "Mode: " + mode;
 
         }
+    }
+
+    private void ChangeWeaponMode(ShootingMode mode)
+    {
+        currentShootingMode = mode;
+        ChangeWeaponModeHUD(currentShootingMode);
     }
 
 }

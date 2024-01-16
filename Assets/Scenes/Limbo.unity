@@ -5125,6 +5125,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1246852817}
     - target: {fileID: 5822505322398285277, guid: 372a3d932e6c76e48a9f4468b1247e20, type: 3}
+      propertyPath: shootingDelay
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5822505322398285277, guid: 372a3d932e6c76e48a9f4468b1247e20, type: 3}
       propertyPath: bulletVelocity
       value: 100
       objectReference: {fileID: 0}
