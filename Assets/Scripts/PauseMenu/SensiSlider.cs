@@ -6,10 +6,10 @@ using UnityEngine.UI;
 public class SensiSlider : MonoBehaviour
 {
     public GameObject slider;
-    private Slider sensiSlider;
+    private SliderManager sensiSlider;
     void Start()
     {
-        sensiSlider = slider.GetComponent<Slider>();
+        sensiSlider = slider.GetComponent<SliderManager>();
     }
 
     // Update is called once per frame

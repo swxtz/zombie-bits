@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -9,7 +10,7 @@ public class MainMenuManager : MonoBehaviour
     [SerializeField] private string initialLevelName;
 
     [SerializeField] private AudioSource audioSource;
-    [SerializeField] private float audioVolume = 0.10f;
+    public float audioVolume = 0.10f;
 
     [Header("Menu Wrappers")]
     [SerializeField] private GameObject mainMenuWrapper;
@@ -19,33 +20,53 @@ public class MainMenuManager : MonoBehaviour
     [SerializeField] private Button playButton;
     [SerializeField] private Button optionsButton;
     [SerializeField] private Button exitButton;
-    
+
+    [Header("Options Buttons")]
+    [SerializeField] private Button backToMainMenu;
+    [SerializeField] private GameObject volumeSlider;
+
 
     private void Awake()
     {
-        audioSource.volume = audioVolume;
         audioSource.Play();
 
-        playButton.onClick.AddListener(onClickPlayGame);
-        exitButton.onClick.AddListener(onClickExitGame);
-        optionsButton.onClick.AddListener(onClickOptionsButton);
+        playButton.onClick.AddListener(OnClickPlayGame);
+        exitButton.onClick.AddListener(OnClickExitGame);
+        optionsButton.onClick.AddListener(OnClickOptionsButton);
+        backToMainMenu.onClick.AddListener(OnClickBackToMainMenu);
 
+        
     }
 
-    private void onClickPlayGame()
+    private void Update()
+    {
+        audioSource.volume = audioVolume;
+    }
+
+    private void OnClickPlayGame()
    {
         SceneManager.LoadSceneAsync(initialLevelName);
         PauseMenu.StartGameFromMenu();
    }
 
-    private void onClickExitGame()
+    private void OnClickExitGame()
     {
         Debug.Log("Saindo...");
         Application.Quit();
     }
 
-    private void onClickOptionsButton()
+    private void OnClickOptionsButton()
     {
         Debug.Log("Opções");
+        optionsWrapper.SetActive(true);
+        mainMenuWrapper.SetActive(false);
     }
+
+    private void OnClickBackToMainMenu()
+    {
+        mainMenuWrapper.SetActive(true);
+        optionsWrapper.SetActive(false);
+    }
+
+    
 }

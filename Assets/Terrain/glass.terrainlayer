@@ -6,9 +6,9 @@ TerrainLayer:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: dirt
-  m_DiffuseTexture: {fileID: 2800000, guid: 5479fcc85f33a0648a31e45152cf4056, type: 3}
-  m_NormalMapTexture: {fileID: 2800000, guid: dd352e9602ae9c94e8d433f04856a034, type: 3}
+  m_Name: glass
+  m_DiffuseTexture: {fileID: 2800000, guid: 1c69846a89b13934e8c4f3ebf5a6fe41, type: 3}
+  m_NormalMapTexture: {fileID: 0}
   m_MaskMapTexture: {fileID: 0}
   m_TileSize: {x: 2, y: 2}
   m_TileOffset: {x: 0, y: 0}
