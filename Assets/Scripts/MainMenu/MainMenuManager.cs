@@ -7,8 +7,22 @@ public class MainMenuManager : MonoBehaviour
 {
     [SerializeField]
     private string initialLevelName;
-    //[SerializeField]
-    //public Scene initialLevelScene;
+
+    [SerializeField]
+    private AudioSource audioSource;
+    private float audioVolume = 0.10f;
+
+
+    private void Awake()
+    {
+        vSyncManager syncManager = new vSyncManager();
+        syncManager.ChangeVSyncMode(vSyncManager.vSyncMode.On);
+
+        Debug.Log("VSync: " + QualitySettings.vSyncCount);
+
+        audioSource.volume = audioVolume;
+        audioSource.Play();
+    }
 
     public void PlayGame()
    {
