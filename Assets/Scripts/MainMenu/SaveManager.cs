@@ -1,11 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
+using UnityEditorInternal;
 using UnityEngine;
 
 public class PlayerManager : MonoBehaviour
 {
     private Save save;
+    private Load load;
 
     [Header("Player")]
     
@@ -14,6 +16,8 @@ public class PlayerManager : MonoBehaviour
     private void Start()
     {
         save = new Save();
+        load = new Load();
+
 
         bool verifySaveDir = VerifySaveDir();
         bool verifyPlayerSave = VerifyPlayerFile();
@@ -22,14 +26,18 @@ public class PlayerManager : MonoBehaviour
             save.CreateSaveDir();
         }
 
-        Debug.Log(verifyPlayerSave);
-
         if (!verifyPlayerSave)
         {
-            
-            Debug.Log("Não existe");
-            save.CreatePlayerFileSave();
+            PlayerSchema infos = new PlayerSchema {
+                language = language,
+                playerUsername = playerName
+            };
+            save.CreatePlayerFileSave(infos);
         }
+
+        PlayerSchema playerInfo = load.LoadPlayerSave();
+        Debug.Log(playerInfo.language);
+
     }
 
     private bool VerifySaveDir()

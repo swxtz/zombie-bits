@@ -8,7 +8,7 @@ public class Save
 {
     public string basePath = Application.persistentDataPath;
     private string saveName = "player";
-    public SavePlayerSchema savePlayerSchema;
+    public PlayerSchema savePlayerSchema;
 
     public void CreateSaveDir()
     {
@@ -21,7 +21,7 @@ public class Save
         }
     }
 
-    public void CreatePlayerFileSave()
+    public void CreatePlayerFileSave(PlayerSchema infos)
     {
         BinaryFormatter formatter = new BinaryFormatter();
 
@@ -29,7 +29,7 @@ public class Save
 
         Directory.CreateDirectory(path + "/");
         FileStream saveFile = File.Create(path + "/" + saveName + ".bits");
-        formatter.Serialize(saveFile, savePlayerSchema);
+        formatter.Serialize(saveFile, infos);
         saveFile.Close();
 
     }

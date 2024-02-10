@@ -3,10 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [System.Serializable]
-public struct SavePlayerSchema
+public struct PlayerSchema
 {
-    public float mainMenuMusicVolume;
-
     // Geral
     public string playerUsername;
     public Language language;
