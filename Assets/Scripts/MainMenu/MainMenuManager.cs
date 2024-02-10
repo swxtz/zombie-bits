@@ -9,9 +9,6 @@ public class MainMenuManager : MonoBehaviour
 {
     [SerializeField] private string initialLevelName;
 
-    [SerializeField] private AudioSource audioSource;
-    public float audioVolume = 0.10f;
-
     [Header("Menu Wrappers")]
     [SerializeField] private GameObject mainMenuWrapper;
     [SerializeField] private GameObject optionsWrapper;
@@ -28,19 +25,15 @@ public class MainMenuManager : MonoBehaviour
 
     private void Awake()
     {
-        audioSource.Play();
-
         playButton.onClick.AddListener(OnClickPlayGame);
         exitButton.onClick.AddListener(OnClickExitGame);
         optionsButton.onClick.AddListener(OnClickOptionsButton);
         backToMainMenu.onClick.AddListener(OnClickBackToMainMenu);
 
-        
-    }
+        Time.timeScale = 1f;
 
-    private void Update()
-    {
-        audioSource.volume = audioVolume;
+
+
     }
 
     private void OnClickPlayGame()
