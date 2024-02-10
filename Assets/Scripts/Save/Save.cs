@@ -7,8 +7,11 @@ using UnityEngine;
 public class Save
 {
     public string basePath = Application.persistentDataPath;
-    private string saveName = "player";
     public PlayerSchema savePlayerSchema;
+
+    // File Names
+    private string saveName = "player";
+    private string optionsName = "options";
 
     public void CreateSaveDir()
     {
@@ -32,6 +35,18 @@ public class Save
         formatter.Serialize(saveFile, infos);
         saveFile.Close();
 
+    }
+
+    public void CreateOptionsFile(OptionsSchema infos)
+    {
+        BinaryFormatter formatter = new BinaryFormatter();
+
+        string path = basePath + "/Saves";
+
+        Directory.CreateDirectory(path + "/");
+        FileStream saveFile = File.Create(path + "/" + optionsName + ".bits");
+        formatter.Serialize(saveFile, infos);
+        saveFile.Close();
     }
 
     public bool VerifySaveDir(string dir)
