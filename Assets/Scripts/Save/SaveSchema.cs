@@ -4,11 +4,11 @@ using Unity.Profiling;
 using UnityEngine;
 
 [System.Serializable]
-public struct PlayerSchema
+public class PlayerSchema
 {
     // Geral
-    public string playerUsername;
-    public Language language;
+    public string playerUsername = "player";
+    public Language language = Language.English;
   
 }
 
@@ -20,9 +20,9 @@ public enum Language
 }
 
 [System.Serializable]
-public struct OptionsSchema
+public class OptionsSchema
 {
     // Music Volume
-    public float mainMenuMusicVolume;
-    public bool mainMenuMusicMuted;
+    public float mainMenuMusicVolume = 50f;
+    public bool mainMenuMusicMuted = false;
 }

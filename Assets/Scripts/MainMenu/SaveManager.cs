@@ -57,6 +57,7 @@ public class PlayerManager : MonoBehaviour
         }
 
         PlayerSchema playerInfo = load.LoadPlayerSave();
+        Debug.Log(playerInfo.playerUsername);
 
     }
 
