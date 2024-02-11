@@ -22,6 +22,19 @@ public class MainMenuManager : MonoBehaviour
     [SerializeField] private Button backToMainMenu;
     [SerializeField] private GameObject volumeSlider;
 
+    [Header("Player Infos")]
+    [SerializeField] private TMPro.TextMeshProUGUI loggedInAs;
+
+    private Load load;
+
+    private void Start()
+    {
+        load = new Load();
+
+        var playerInfos = load.LoadPlayerSave();
+
+        loggedInAs.text = "Jogando como: " + playerInfos.playerUsername;
+    }
 
     private void Awake()
     {

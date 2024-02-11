@@ -49,15 +49,15 @@ public class PlayerManager : MonoBehaviour
             OptionsSchema infos = new OptionsSchema
             {
                 mainMenuMusicVolume = mainMenuMusicVolume,
-                mainMenuMusicMuted = mainMenuMusicMuted
+                mainMenuMusicMuted = mainMenuMusicMuted,
+                xSensi = 100f,
+                ySensi = 100f,
             };
 
             save.CreateOptionsFile(infos);
         }
 
         PlayerSchema playerInfo = load.LoadPlayerSave();
-        Debug.Log(playerInfo.playerUsername);
-
     }
 
     private bool VerifySaveDir()

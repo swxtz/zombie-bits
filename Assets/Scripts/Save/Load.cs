@@ -24,4 +24,17 @@ public class Load
 
         return infos;
     }
+
+    public OptionsSchema LoadOptions()
+    {
+        BinaryFormatter formatter = new BinaryFormatter();
+
+        string path = basePath + "/Saves"; //AppData/LocalLow
+        FileStream saveFile = File.Open(path + "/" + optionsName + ".bits", FileMode.Open);
+
+        OptionsSchema infos = (OptionsSchema)formatter.Deserialize(saveFile);
+        saveFile.Close();
+
+        return infos;
+    }
 }

@@ -25,4 +25,8 @@ public class OptionsSchema
     // Music Volume
     public float mainMenuMusicVolume = 50f;
     public bool mainMenuMusicMuted = false;
+
+    // Player sensi
+    public float ySensi = 300f;
+    public float xSensi = 300f;
 }
