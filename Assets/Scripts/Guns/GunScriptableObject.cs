@@ -37,7 +37,7 @@ public class GunScriptableObject : ScriptableObject
         ShootSystem = Model.GetComponentInChildren<ParticleSystem>();
     }
 
-    private void Shoot()
+    public void Shoot()
     {
         if (Time.time > ShootConfig.FireRate + LastShootTime)
         {
