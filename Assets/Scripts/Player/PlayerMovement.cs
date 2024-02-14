@@ -1,66 +1,78 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Collections;
 using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
+    [Header("Player Values")]
+    [SerializeField] private float WalkSpeed;
+    [SerializeField] private float JumpHeight;
+    [SerializeField] private float RunMultiplier;
 
-    private CharacterController controller;
+    [Header("GameObjects Helpers")]
+    [SerializeField] private GameObject PlayerParent;
 
-    public float speed = 12f;
-    public float gravity = -9.8f * 2;
-    public float jumpHeight = 3f;
+    [Space]
+    [SerializeField] private Transform GroundCheck;
+    [SerializeField] private LayerMask GroundMask;
+    [SerializeField] private float GroundDistance;
 
-    public Transform groundCheck;
-    public float groundDistance = 0.4f;
-    public LayerMask groundMask;
+    private Vector3 Velocity;
 
-    Vector3 velocity;
+    private CharacterController CharacterController;
 
-    bool isGrounded;
-    bool isMoving;
+    [ReadOnly] private bool isGrounded;
+    private bool InMoviment;
+    private bool IsRun;
 
-    private Vector3 lastPosition = new Vector3(0f, 0f, 0f);
+    private float Gravity = -9.8f;
 
-    void Start()
+    private void Start()
     {
-        controller = GetComponent<CharacterController>();
+        CharacterController = GetComponent<CharacterController>();
+
+
     }
 
-    void Update()
+    private void Update()
     {
-        isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
-        if(isGrounded && velocity.y <0)
+        isGrounded = Physics.CheckSphere(GroundCheck.position, GroundDistance, GroundMask);
+        if (isGrounded && Velocity.y < 0)
         {
-            velocity.y = -2f;
+            Velocity.y = -2f;
         }
 
-        float x = Input.GetAxis("Horizontal");
-        float z = Input.GetAxis("Vertical");
+        var speed = WalkSpeed;
+        var x = Input.GetAxis("Horizontal");
+        var z = Input.GetAxis("Vertical");
 
-        Vector3 move = transform.right * x + transform.forward * z;
-
-        controller.Move(move * speed * Time.deltaTime);
-
-        if(Input.GetButtonDown("Jump") && isGrounded)
+        if (Input.GetKey(KeyCode.LeftShift))
         {
-            velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
+            speed = WalkSpeed * RunMultiplier;
         }
 
-        // Falling down
-        velocity.y += gravity * Time.deltaTime;
-
-
-        controller.Move(velocity * Time.deltaTime);
-
-        if (lastPosition != gameObject.transform.position && isGrounded == true)
+        if (Input.GetKeyDown(KeyCode.Space) || Input.GetButtonDown("Jump"))
         {
-            isMoving = true;
-        } else
-        {
-            isMoving = false;
+            Jump();
         }
 
-        lastPosition = gameObject.transform.position;
+        var movement = PlayerParent.transform.right * x + PlayerParent.transform.forward * z;
+
+        CharacterController.Move(movement * speed * Time.deltaTime);
+
+        Velocity.y += Gravity * 2f * Time.deltaTime;
+
+        CharacterController.Move(Velocity * Time.deltaTime);
     }
+
+    private void Jump()
+    {
+        if (isGrounded)
+        {
+            Velocity.y = Mathf.Sqrt(JumpHeight * -2f * Gravity);
+        }
+    }
+
 }
