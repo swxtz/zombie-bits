@@ -20,12 +20,12 @@ RenderSettings:
   m_FogDensity: 0.01
   m_LinearFogStart: 0
   m_LinearFogEnd: 300
-  m_AmbientSkyColor: {r: 0, g: 0, b: 0, a: 1}
+  m_AmbientSkyColor: {r: 0.14150941, g: 0.13950692, b: 0.13950692, a: 1}
   m_AmbientEquatorColor: {r: 0.114, g: 0.125, b: 0.133, a: 1}
   m_AmbientGroundColor: {r: 0.047, g: 0.043, b: 0.035, a: 1}
   m_AmbientIntensity: 1
   m_AmbientMode: 3
-  m_SubtractiveShadowColor: {r: 0.11320752, g: 0.11320752, b: 0.11320752, a: 1}
+  m_SubtractiveShadowColor: {r: 0, g: 0, b: 0, a: 1}
   m_SkyboxMaterial: {fileID: 2100000, guid: 30e7d90789809dd49969b67e8386eb85, type: 2}
   m_HaloStrength: 0.5
   m_FlareStrength: 1
@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.049349673, g: 0.062378056, b: 0.08495904, a: 1}
+  m_IndirectSpecularColor: {r: 0.12653688, g: 0.16337618, b: 0.24609965, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -427,10 +427,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: Campfire
       objectReference: {fileID: 0}
+    - target: {fileID: 8236219624192244787, guid: 7013383f8be889f4a8bbb6f3c0528d6c, type: 3}
+      propertyPath: m_Range
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 8236219624192244787, guid: 7013383f8be889f4a8bbb6f3c0528d6c, type: 3}
+      propertyPath: m_Intensity
+      value: 7.91
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 2075498251976398512, guid: 7013383f8be889f4a8bbb6f3c0528d6c, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1927399346}
   m_SourcePrefab: {fileID: 100100000, guid: 7013383f8be889f4a8bbb6f3c0528d6c, type: 3}
 --- !u!1001 &1106795806
 PrefabInstance:
@@ -516,6 +527,7 @@ GameObject:
   - component: {fileID: 1193133400}
   - component: {fileID: 1193133399}
   - component: {fileID: 1193133398}
+  - component: {fileID: 1193133401}
   m_Layer: 0
   m_Name: Camera
   m_TagString: Untagged
@@ -591,12 +603,56 @@ Transform:
   m_GameObject: {fileID: 1193133397}
   serializedVersion: 2
   m_LocalRotation: {x: 0.093277864, y: -0.026175812, z: -0.0069161206, w: 0.9952719}
-  m_LocalPosition: {x: 444.229, y: 2.607, z: 213.29}
+  m_LocalPosition: {x: 444.231, y: 2.613, z: 213.258}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 10.679, y: -3.115, z: -1.087}
+--- !u!114 &1193133401
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1193133397}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a79441f348de89743a2939f4d699eac1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_RenderShadows: 1
+  m_RequiresDepthTextureOption: 2
+  m_RequiresOpaqueTextureOption: 2
+  m_CameraType: 0
+  m_Cameras: []
+  m_RendererIndex: -1
+  m_VolumeLayerMask:
+    serializedVersion: 2
+    m_Bits: 1
+  m_VolumeTrigger: {fileID: 0}
+  m_VolumeFrameworkUpdateModeOption: 2
+  m_RenderPostProcessing: 0
+  m_Antialiasing: 0
+  m_AntialiasingQuality: 2
+  m_StopNaN: 0
+  m_Dithering: 0
+  m_ClearDepth: 1
+  m_AllowXRRendering: 1
+  m_AllowHDROutput: 1
+  m_UseScreenCoordOverride: 0
+  m_ScreenSizeOverride: {x: 0, y: 0, z: 0, w: 0}
+  m_ScreenCoordScaleBias: {x: 0, y: 0, z: 0, w: 0}
+  m_RequiresDepthTexture: 0
+  m_RequiresColorTexture: 0
+  m_Version: 2
+  m_TaaSettings:
+    quality: 3
+    frameInfluence: 0.1
+    jitterScale: 1
+    mipBias: 0
+    varianceClampScale: 0.9
+    contrastAdaptiveSharpening: 0
 --- !u!1001 &1293671764
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1139,7 +1195,7 @@ Terrain:
   m_StaticShadowCaster: 0
   m_IgnoreQualitySettings: 0
   m_ReflectionProbeUsage: 1
-  m_MaterialTemplate: {fileID: 10652, guid: 0000000000000000f000000000000000, type: 0}
+  m_MaterialTemplate: {fileID: 2100000, guid: 594ea882c5a793440b60ff72d896021e, type: 2}
   m_BakeLightProbesForTrees: 1
   m_PreserveTreePrototypeLayers: 0
   m_DeringLightProbesForTrees: 1
@@ -1328,6 +1384,34 @@ MonoBehaviour:
   language: 0
   mainMenuMusicVolume: 10
   mainMenuMusicMuted: 1
+--- !u!1 &1927399344 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2075498251976398512, guid: 7013383f8be889f4a8bbb6f3c0528d6c, type: 3}
+  m_PrefabInstance: {fileID: 578176776}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1927399346
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1927399344}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 474bcb49853aa07438625e644c072ee6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Version: 3
+  m_UsePipelineSettings: 1
+  m_AdditionalLightsShadowResolutionTier: 2
+  m_LightLayerMask: 1
+  m_RenderingLayers: 1
+  m_CustomShadowLayers: 0
+  m_ShadowLayerMask: 1
+  m_ShadowRenderingLayers: 1
+  m_LightCookieSize: {x: 1, y: 1}
+  m_LightCookieOffset: {x: 0, y: 0}
+  m_SoftShadowQuality: 0
 --- !u!1001 &1966833391
 PrefabInstance:
   m_ObjectHideFlags: 0
