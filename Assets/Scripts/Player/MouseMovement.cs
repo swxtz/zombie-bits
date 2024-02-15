@@ -4,28 +4,24 @@ using UnityEngine;
 
 public class MouseMovement : MonoBehaviour
 {
-    public float mouseSensitivity = 500f;
-    public float ySensi;
-    public float xSensi;
+    [SerializeField] private GameObject ChestCharacter;
 
+    [SerializeField] private float ySensi;
+    [SerializeField] private float xSensi;
+
+    // Chest Clamp
+    private float MinXClamp = -45f;
+    private float MaxXClamp = 45f;
 
     float xRotation = 0f;
     float yRotation = 0f;
 
-    private float clampLimiter = 90f;
-
     private Load loadConfig;
-    
     void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
 
-        loadConfig = new Load();
-
-        OptionsSchema optionsSchema = loadConfig.LoadOptions();
-
-        ySensi = optionsSchema.ySensi;
-        xSensi = optionsSchema.xSensi;
+        LoadSensibility();
     }
 
 
@@ -38,13 +34,24 @@ public class MouseMovement : MonoBehaviour
         // Rotation around the x axis (Look up and down)
         xRotation -= mouseY;
 
-        xRotation = Mathf.Clamp(xRotation, -clampLimiter, clampLimiter);
+        xRotation = Mathf.Clamp(xRotation, MinXClamp, MaxXClamp);
 
         yRotation += mouseX;
 
         //Apply rotation to our transform
         //Todo create custom method
 
-        transform.localRotation = Quaternion.Euler(xRotation, yRotation, 0f);
+        transform.localRotation = Quaternion.Euler(transform.localRotation.x, yRotation, 0f);
+        ChestCharacter.transform.localRotation = Quaternion.Euler(xRotation, transform.localRotation.y, 0f);
+    }
+
+    private void LoadSensibility()
+    {
+        loadConfig = new Load();
+
+        OptionsSchema optionsSchema = loadConfig.LoadOptions();
+
+        ySensi = optionsSchema.ySensi;
+        xSensi = optionsSchema.xSensi;
     }
 }
