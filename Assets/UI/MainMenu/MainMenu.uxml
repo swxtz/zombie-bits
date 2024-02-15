@@ -1,0 +1,12 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="False">
+    <Style src="project://database/Assets/UI/MainMenu/MainMenu.uss?fileID=7433441132597879392&amp;guid=d941a46e637ac4945a0b13c8503d5ff0&amp;type=3#MainMenu" />
+    <ui:VisualElement style="flex-grow: 1;">
+        <ui:VisualElement name="Container" style="flex-grow: 1; width: 330px;">
+            <ui:VisualElement name="Buttons-Wrapper" style="flex-grow: 1; height: 437px; align-items: center; justify-content: center; width: 530px;">
+                <ui:Button text="Jogar" parse-escape-sequences="true" display-tooltip-when-elided="true" name="ButtonStart" class="main-button button" />
+                <ui:Button text="Sair" parse-escape-sequences="true" display-tooltip-when-elided="true" name="ButtonExit" class="main-button button" />
+            </ui:VisualElement>
+            <ui:Label tabindex="-1" text="Jogando como: " parse-escape-sequences="true" display-tooltip-when-elided="true" name="PlayerWith" class="player-as" style="-unity-text-align: upper-left; margin-top: 20px; margin-right: 20px; margin-bottom: 20px; margin-left: 20px;" />
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

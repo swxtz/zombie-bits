@@ -1,0 +1,32 @@
+.button {
+    -unity-font: url('project://database/Assets/Assets/MainMenu/Fonts/Montserrat/static/Montserrat-BoldItalic.ttf?fileID=12800000&guid=307dc7f7929a12b4c917a2077724fe3e&type=3#Montserrat-BoldItalic');
+    -unity-font-style: bold;
+    font-size: 28px;
+    margin-top: 18px;
+    margin-right: 18px;
+    margin-bottom: 18px;
+    margin-left: 18px;
+    width: 200px;
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px;
+    border-bottom-right-radius: 12px;
+    border-bottom-left-radius: 12px;
+    -unity-background-image-tint-color: rgb(56, 56, 56);
+    background-color: rgb(142, 142, 142);
+    color: rgb(255, 255, 255);
+    transition-duration: 200ms;
+}
+
+.button:hover {
+    background-color: rgb(99, 99, 99);
+
+
+}
+
+.player-as {
+    -unity-font: url('project://database/Assets/Assets/MainMenu/Fonts/Montserrat/static/Montserrat-MediumItalic.ttf?fileID=12800000&guid=3473ae06b61c4e24898f745b36555eab&type=3#Montserrat-MediumItalic');
+    color: rgb(255, 255, 255);
+    font-size: 18px;
+    margin-right: 20px;
+    margin-left: 20px;
+}
